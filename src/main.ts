@@ -1,8 +1,17 @@
-import './style.css'
+import { Engine, MeshBuilder, Scene } from "@babylonjs/core";
+import "./style/style.scss";
 
-const app = document.querySelector<HTMLDivElement>('#app')!
+const renderCanvas = <HTMLCanvasElement>document.getElementById("renderCanvas");
 
-app.innerHTML = `
-  <h1>Hellooooooo Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
+if (renderCanvas) {
+  const engine = new Engine(renderCanvas, true, {});
+  const scene = new Scene(engine);
+
+  MeshBuilder.CreateBox("box", {}, scene);
+  scene.createDefaultCameraOrLight(true, true, true);
+  scene.createDefaultEnvironment();
+
+  engine.runRenderLoop(() => {
+    scene.render();
+  });
+}
