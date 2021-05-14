@@ -13,6 +13,7 @@
   "dependencies": {
     "@babylonjs/core": "^4.2.0",
     "@babylonjs/gui": "^4.2.0",
-    "@types/babylonjs": "^2.4.1"
+    "@types/babylonjs": "^2.4.1",
+    "sass": "^1.32.13"
   }
 }
