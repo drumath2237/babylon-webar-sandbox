@@ -1,4 +1,5 @@
 import {
+  AbstractMesh,
   ArcRotateCamera,
   DeviceOrientationCamera,
   Engine,
@@ -21,21 +22,10 @@ window.addEventListener("DOMContentLoaded", async () => {
     const engine = new Engine(renderCanvas, true, {});
     const scene = new Scene(engine);
 
-    MeshBuilder.CreateBox("box", { size: 0.1 }, scene);
-    // scene.createDefaultCameraOrLight(true, true, true);
-
-    // const mainCamera = new ArcRotateCamera('maincamera', -Math.PI/2, Math.PI/2, 2, new Vector3(0,0,0), scene);
-    // mainCamera.attachControl();
-
-    // const mainCamera = new FreeCamera(
-    //   "camera",
-    //   new Vector3(0, 0, -2),
-    //   scene,
-    //   true
-    // );
+    // MeshBuilder.CreateBox("box", { size: 0.1 }, scene);
     const mainCamera = new DeviceOrientationCamera(
       'deviceCamera',
-      new Vector3(0, 0, -2),
+      new Vector3(0, 0, -5),
       scene,
     );
     mainCamera.setTarget(Vector3.Zero());
@@ -44,17 +34,24 @@ window.addEventListener("DOMContentLoaded", async () => {
     var light = new HemisphericLight("light1", new Vector3(0, 1, 0), scene);
     light.intensity = 1.0;
 
-    // const manager = new GUI3DManager(scene);
-    // const button = new HolographicButton('button');
-    // button.text = 'click';
-    // button.scaling = new Vector3(0.1, 0.1, 0.2);
-    // manager.addControl(button);
+    const anchor = new AbstractMesh('anchor', scene);
+    anchor.scaling = new Vector3(0.1,0.1,0.1);
+
+    const manager = new GUI3DManager(scene);
+
+    const button = new HolographicButton('button');
+    manager.addControl(button);
+
+    button.linkToTransformNode(anchor);
+    button.text = 'click';
+    button.scaling = new Vector3(1, 1, 2);
 
     const xr = await scene.createDefaultXRExperienceAsync({
       uiOptions: {
         sessionMode: "immersive-ar",
         referenceSpaceType: "unbounded",
       },
+      optionalFeatures: true,
     });
 
     console.log(
