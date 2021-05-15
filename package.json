@@ -11,8 +11,8 @@
     "vite": "^2.3.0"
   },
   "dependencies": {
-    "@babylonjs/core": "^4.2.0",
-    "@babylonjs/gui": "^4.2.0",
+    "@babylonjs/core": "5.0.0-alpha.22",
+    "@babylonjs/gui": "5.0.0-alpha.22",
     "@types/babylonjs": "^2.4.1",
     "sass": "^1.32.13"
   }

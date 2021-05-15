@@ -2,20 +2,20 @@
 # yarn lockfile v1
 
 
-"@babylonjs/core@4.2.0", "@babylonjs/core@^4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@babylonjs/core/-/core-4.2.0.tgz#d1cfd43d7e3d2e58cde79083f04eeb607f6c8f18"
-  integrity sha512-sZQigPvMDc0pcgwlKvTF5gsMzGwT8gelQIOyxELrohdFu12pHGhIr61+yVxxq9tpCdzyYD9kS8LM0w2y+5ypkg==
+"@babylonjs/core@5.0.0-alpha.22":
+  version "5.0.0-alpha.22"
+  resolved "https://registry.yarnpkg.com/@babylonjs/core/-/core-5.0.0-alpha.22.tgz#b72ac646bd9e39fcc917d57ec82931ee40a41adf"
+  integrity sha512-/yjSVcaT9ZfjIZ0QiaB33FntNy/iregK7nEfFwS5LIHEcb7ATPR18wc2OFtXpA2CX0wCsIRpMaTdF5K7aS+4zA==
   dependencies:
-    tslib ">=1.10.0"
+    tslib "^2.1.0"
 
-"@babylonjs/gui@^4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@babylonjs/gui/-/gui-4.2.0.tgz#c2a35ca6724759731fe0c4ddbfe2490301847f93"
-  integrity sha512-AQnqwFDmQ05FAw4B0BPVUFqWgdSKVI23qVHm/uOOMBQhMo8+WE2pTNATm6Qw/HDVLCp5qUjwIij/3JtG5s0fBw==
+"@babylonjs/gui@5.0.0-alpha.22":
+  version "5.0.0-alpha.22"
+  resolved "https://registry.yarnpkg.com/@babylonjs/gui/-/gui-5.0.0-alpha.22.tgz#81bab176778e714a79b3542a711700adad01e69b"
+  integrity sha512-Z/Wt6Yi7eD19ks1tdqyOyXdXDHTvUdS118sL3hk1nGIigtZUaynMJ4oSLfGmozmJBKoMp/2uttzAhKBS1VTS/g==
   dependencies:
-    "@babylonjs/core" "4.2.0"
-    tslib ">=1.10.0"
+    "@babylonjs/core" "5.0.0-alpha.22"
+    tslib "^2.1.0"
 
 "@types/babylonjs@^2.4.1":
   version "2.4.1"
@@ -206,7 +206,7 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-tslib@>=1.10.0:
+tslib@^2.1.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.2.0.tgz#fb2c475977e35e241311ede2693cee1ec6698f5c"
   integrity sha512-gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w==

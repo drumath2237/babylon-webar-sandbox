@@ -1,14 +1,13 @@
 import {
   AbstractMesh,
+  AmmoJSPlugin,
   ArcRotateCamera,
-  DeviceOrientationCamera,
   Engine,
-  FreeCamera,
   HemisphericLight,
-  MeshBuilder,
+  IWebXRHandTrackingOptions,
   Scene,
   Vector3,
-  WebXRSessionManager,
+  WebXRFeatureName,
 } from "@babylonjs/core";
 import { GUI3DManager, HolographicButton } from "@babylonjs/gui";
 import "./style/style.scss";
@@ -22,40 +21,56 @@ window.addEventListener("DOMContentLoaded", async () => {
     const engine = new Engine(renderCanvas, true, {});
     const scene = new Scene(engine);
 
-    // MeshBuilder.CreateBox("box", { size: 0.1 }, scene);
-    const mainCamera = new DeviceOrientationCamera(
-      'deviceCamera',
-      new Vector3(0, 0, -5),
+    // await Ammo();
+    scene.enablePhysics(null, new AmmoJSPlugin());
+
+    const camera = new ArcRotateCamera(
+      "camera",
+      -Math.PI / 2,
+      Math.PI / 2,
+      2,
+      Vector3.Zero(),
       scene,
+      true
     );
-    mainCamera.setTarget(Vector3.Zero());
-    mainCamera.attachControl();
+    camera.attachControl();
 
     var light = new HemisphericLight("light1", new Vector3(0, 1, 0), scene);
     light.intensity = 1.0;
 
-    const anchor = new AbstractMesh('anchor', scene);
-    anchor.scaling = new Vector3(0.1,0.1,0.1);
+    const anchor = new AbstractMesh("anchor", scene);
+    anchor.scaling = new Vector3(0.1, 0.1, 0.1);
 
     const manager = new GUI3DManager(scene);
 
-    const button = new HolographicButton('button');
+    const button = new HolographicButton("button");
     manager.addControl(button);
 
     button.linkToTransformNode(anchor);
-    button.text = 'click';
+    button.text = "button";
+    button.position.z = 2;
     button.scaling = new Vector3(1, 1, 2);
+
+    button.onPointerClickObservable.add(() => {
+      button.text += "!";
+    });
 
     const xr = await scene.createDefaultXRExperienceAsync({
       uiOptions: {
         sessionMode: "immersive-ar",
         referenceSpaceType: "unbounded",
       },
-      optionalFeatures: true,
     });
 
-    console.log(
-      await WebXRSessionManager.IsSessionSupportedAsync("immersive-ar")
+    xr.baseExperience.featuresManager.enableFeature(
+      WebXRFeatureName.HAND_TRACKING,
+      "latest",
+      {
+        xrInput: xr.input,
+        jointMeshes: {
+          enablePhysics: true,
+        },
+      } as IWebXRHandTrackingOptions
     );
 
     // scene.createDefaultEnvironment();
@@ -64,7 +79,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       scene.render();
     });
 
-    window.addEventListener("resize", (e) => {
+    window.addEventListener("resize", () => {
       engine.resize();
     });
   }
