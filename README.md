@@ -1,11 +1,15 @@
 # babylon-webar-sandbox
 
+[![github pages](https://github.com/drumath2237/babylon-webar-sandbox/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/drumath2237/babylon-webar-sandbox/actions/workflows/gh-pages.yml)
+
 ## About
 
 HoloLens2のOSアプデ(21H1)でChromium-based Edgeが使えるようになり、
 WebXRができるようになったのでBabylon.jsで試すために作った。
 
 HandTrackingだったりHolographic Buttonだったりが使える。
+
+https://twitter.com/ninisan_drumath/status/1393625116660043785
 
 ## Install
 
