@@ -11,6 +11,14 @@ HandTrackingだったりHolographic Buttonだったりが使える。
 
 https://twitter.com/ninisan_drumath/status/1393625116660043785
 
+## Demo
+
+![img](docs/vlcsnap-2021-05-17-14h17m48s637.png)
+
+（QRコード使うとHoloLensで表示するのに便利なので）
+
+[![img](docs/qrcode_drumath2237.github.io.png)](https://drumath2237.github.io/babylon-webar-sandbox)
+
 ## Install
 
 ```bash
