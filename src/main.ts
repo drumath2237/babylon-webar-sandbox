@@ -1,6 +1,6 @@
 import {
   AbstractMesh,
-  AmmoJSPlugin,
+  // AmmoJSPlugin,
   ArcRotateCamera,
   Engine,
   HemisphericLight,
@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     const scene = new Scene(engine);
 
     // await Ammo();
-    scene.enablePhysics(null, new AmmoJSPlugin());
+    // scene.enablePhysics(null, new AmmoJSPlugin());
 
     const camera = new ArcRotateCamera(
       "camera",
@@ -40,6 +40,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     const anchor = new AbstractMesh("anchor", scene);
     anchor.scaling = new Vector3(0.1, 0.1, 0.1);
+    anchor.position = new Vector3(0, 0, 1);
 
     const manager = new GUI3DManager(scene);
 
@@ -47,9 +48,16 @@ window.addEventListener("DOMContentLoaded", async () => {
     manager.addControl(button);
 
     button.linkToTransformNode(anchor);
-    button.text = "button";
+    button.text = "Holographic Button\n";
     button.position.z = 2;
     button.scaling = new Vector3(1, 1, 2);
+
+    button.pointerDownAnimation = () => {
+      button.scaling = new Vector3(1, 1, 1);
+    }
+    button.pointerUpAnimation = () => {
+      button.scaling = new Vector3(1, 1, 2);
+    }
 
     button.onPointerClickObservable.add(() => {
       button.text += "!";
@@ -62,16 +70,16 @@ window.addEventListener("DOMContentLoaded", async () => {
       },
     });
 
-    xr.baseExperience.featuresManager.enableFeature(
-      WebXRFeatureName.HAND_TRACKING,
-      "latest",
-      {
-        xrInput: xr.input,
-        jointMeshes: {
-          enablePhysics: true,
-        },
-      } as IWebXRHandTrackingOptions
-    );
+    // xr.baseExperience.featuresManager.enableFeature(
+    //   WebXRFeatureName.HAND_TRACKING,
+    //   "latest",
+    //   {
+    //     xrInput: xr.input,
+    //     jointMeshes: {
+    //       enablePhysics: true,
+    //     },
+    //   } as IWebXRHandTrackingOptions
+    // );
 
     // scene.createDefaultEnvironment();
 
