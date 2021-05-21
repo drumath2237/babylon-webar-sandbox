@@ -39,7 +39,7 @@ openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out c
 HoloLens2のEdgeで`edge://flags`にアクセスして
 
 - WebXR Incubation
-- WebXR experience with joint tracking
+- WebXR experience with joint tracking（ハンドトラッキングを試したい場合のみ）
 
 を有効にする。
 
