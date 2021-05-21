@@ -2,12 +2,11 @@ import {
   AbstractMesh,
   // AmmoJSPlugin,
   ArcRotateCamera,
+  Color3,
   Engine,
   HemisphericLight,
-  IWebXRHandTrackingOptions,
   Scene,
   Vector3,
-  WebXRFeatureName,
 } from "@babylonjs/core";
 import { GUI3DManager, HolographicButton } from "@babylonjs/gui";
 import "./style/style.scss";
@@ -28,32 +27,37 @@ window.addEventListener("DOMContentLoaded", async () => {
       "camera",
       -Math.PI / 2,
       Math.PI / 2,
-      2,
+      1,
       Vector3.Zero(),
       scene,
       true
     );
     camera.attachControl();
+    camera.minZ = 0.001;
 
-    var light = new HemisphericLight("light1", new Vector3(0, 1, 0), scene);
+
+    var light = new HemisphericLight("light1", new Vector3(1, 1, 0), scene);
     light.intensity = 1.0;
 
     const anchor = new AbstractMesh("anchor", scene);
-    anchor.scaling = new Vector3(0.1, 0.1, 0.1);
-    anchor.position = new Vector3(0, 0, 1);
+    anchor.scaling = new Vector3(1, 1, 1);
+    anchor.position = new Vector3(0, 0, 0);
 
     const manager = new GUI3DManager(scene);
 
     const button = new HolographicButton("button");
-    manager.addControl(button);
-
     button.linkToTransformNode(anchor);
-    button.text = "Holographic Button\n";
+    manager.addControl(button);
+    button.text = "Button";
+    button.imageUrl = "https://www.babylonjs-playground.com/textures/icons/Settings.png";
     button.position.z = 2;
     button.scaling = new Vector3(1, 1, 2);
+    button.tooltipText = "Holographic\nButton";
+    button.backMaterial.albedoColor = new Color3(0.12, 0.171, 0.55);
+    
 
     button.pointerDownAnimation = () => {
-      button.scaling = new Vector3(1, 1, 1);
+      button.scaling = new Vector3(1, 1, 1.5);
     }
     button.pointerUpAnimation = () => {
       button.scaling = new Vector3(1, 1, 2);
@@ -63,7 +67,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       button.text += "!";
     });
 
-    const xr = await scene.createDefaultXRExperienceAsync({
+    await scene.createDefaultXRExperienceAsync({
       uiOptions: {
         sessionMode: "immersive-ar",
         referenceSpaceType: "unbounded",
