@@ -13,7 +13,7 @@ https://twitter.com/ninisan_drumath/status/1393625116660043785
 
 ## Demo
 
-![img](docs/vlcsnap-2021-05-17-14h17m48s637.png)
+![img](docs/cube-physics.png)
 
 （QRコード使うとHoloLensで表示するのに便利なので）
 
@@ -39,7 +39,7 @@ openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out c
 HoloLens2のEdgeで`edge://flags`にアクセスして
 
 - WebXR Incubation
-- WebXR experience with joint tracking（ハンドトラッキングを試したい場合のみ）
+- WebXR experience with joint tracking
 
 を有効にする。
 
