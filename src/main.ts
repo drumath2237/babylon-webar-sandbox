@@ -12,7 +12,6 @@ import {
   Vector3,
   WebXRFeatureName,
 } from "@babylonjs/core";
-import { meshUboDeclaration } from "@babylonjs/core/Shaders/ShadersInclude/meshUboDeclaration";
 import { GUI3DManager, HolographicButton } from "@babylonjs/gui";
 import "./style/style.scss";
 
